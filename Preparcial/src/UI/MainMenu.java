@@ -2,54 +2,41 @@ package UI;
 
 import Excepciones.UsuarioInexistenteException;
 import controladorServicio.sistema;
+import modelo.Usuario;
 
 import java.util.Scanner;
 
 public class MainMenu {
     public static void main(String[] args) {
         sistema sistema = new sistema();
-
+        Scanner sc = new Scanner(System.in);
         int opp;
-        do{
-            Scanner sc = new Scanner(System.in);
-            boolean IS = false;
-            boolean ver;
+        Usuario login = null;
             do {
-                System.out.println("====Menu====");
-                System.out.println("Login de usuario");
+                System.out.println("LOGIN DE USUARIO");
+                System.out.println("Ingrese su codigo de usuario:");
+                String cod = sc.nextLine();
+                System.out.println("Ingrese la clave:");
                 int cl = sc.nextInt();
                 sc.nextLine();
                 try {
-                    ver = sistema.verificacion(cl);
-                    IS = true;
+                    login = sistema.verificacion(cl,cod);
                 } catch (UsuarioInexistenteException e) {
                     System.out.println("Error: " + e.getMessage());
                 }
-            }while(IS == false);
+            }while(login ==null);
 
-
-            if(ver)
-
-
-
-            System.out.println("(2) Registrar un equipo de laboratorio");//administrador
-            System.out.println("(3) Registrar un usuario");//admin
-            System.out.println("(4) Cargar equipos desde archivo de texto");//admin
-            System.out.println("(5) Cargar usuarios desde archivo de texto");//admin
-            System.out.println("(6) Guardar el estado completo del sistema");//admin
-            System.out.println("(7) Recuperar el estado del sistema desde archivo binario");//admin
-            System.out.println("(8) Mostrar inventario de equipos por laboratorio y estado");
-            System.out.println("(9) Programar una sesion de uso de un equipo");
-            System.out.println("(10) Cerrar una sesion de uso y calcular penalizacion");
-            System.out.println("(11) Mostrar los equipos con mayor uso por laboratorio");
-            System.out.println("(12) Mostrar usuarios con mayor indice de uso indebido");
-            System.out.println("(13) Gestion de administradores");//crear/listar
-            System.out.println("(0) Salir");
+        do{
+            login.mostrarmenu();
+            System.out.println("Ingrese una opcion:");
             opp = sc.nextInt();
             sc.nextLine();
             switch(opp){
                 case 1:
+                    sistema.mostrarequipos();
+                    break;
                 case 2:
+
                 case 3:
                 case 4:
                 case 5:
