@@ -33,19 +33,29 @@ public class sistema {
         this.usuarios = usuarios;
     }
 
-    public boolean verificacion(int clave) throws UsuarioInexistenteException {
+    public Usuario verificacion(int clave,String  cod ) throws UsuarioInexistenteException {
         for(Usuario u:usuarios){
-            if(u.getClave() == clave) {
-                if(u instanceof Administrador){
-                    System.out.println("Accediendo al sistema como administrador");
-                    return true;
-                }
-                else{
-                    System.out.println(" Clave de usuario no corresponde a un administrador. Accediendo con funciones limitadas");
-                    return false;
+            if(u.getCodigo().equals(cod)) {
+                if (u.getClave() == clave) {
+                    if (u instanceof Administrador) {
+                        System.out.println("Accediendo al sistema como administrador");
+                        return u;
+                    } else {
+                        System.out.println("Bienvenido estudiante/monitor.Accediendo con funciones limitadas");
+                        return u;
+                    }
                 }
             }
         }
-        throw new UsuarioInexistenteException("No existe un usuario con la clave ingresada");
+        throw new UsuarioInexistenteException("No existe un usuario con este Codigo");
     }
+
+    public void mostrarequipos(){
+        for(EquipoLaboratorio e:equipos){
+            System.out.println("Equipo: "+e.getNombreEquipo()+"("+e.getCodigo()+")\nLaboratorio: "+e.getLaboratorio()+
+                    "\nEstado:"+e.getEstado());
+        }
+    }
+
+
 }
