@@ -3,11 +3,11 @@ package modelo;
 public abstract class Usuario {
 
     protected String nombre;
-    protected String rol; // numeraciones: 1. Estudiante, 2. Docente, 3. Personal de apoyo
+    protected Rol rol; // numeraciones: 1. Estudiante, 2. Docente, 3. Personal de apoyo
     protected String codigo;
     protected int clave;
 
-    protected Usuario(String nombre, String rol, String codigo, int clave) {
+    protected Usuario(String nombre, Rol rol, String codigo, int clave) {
 
         this.nombre = nombre;
         this.rol = rol;
@@ -24,11 +24,11 @@ public abstract class Usuario {
         this.nombre = nombre;
     }
 
-    public String getRol() {
+    public Rol getRol() {
         return rol;
     }
 
-    public void setRol(String rol) {
+    public void setRol(Rol rol) {
         this.rol = rol;
     }
 

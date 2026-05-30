@@ -2,7 +2,7 @@ package modelo;
 
 public class Monitor extends Usuario {
 
-    public Monitor(String nombre, String rol, String codigo, int clave) {
+    public Monitor(String nombre, Rol rol, String codigo, int clave) {
         super(nombre, rol, codigo, clave);
     }
 
