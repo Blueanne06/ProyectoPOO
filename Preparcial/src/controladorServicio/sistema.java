@@ -145,14 +145,14 @@ public class sistema implements Serializable{
         ranking.sort(Map.Entry.<Integer, Float>comparingByValue().reversed());
         for(int j=0;j<3;j++){
             int e = ranking.get(j).getKey();
-            System.out.println("("+j+1+") Equipo: "+ equipos.get(e).getNombreEquipo()+"("+equipos.get(e).getCodigo()+") con "+ranking.get(j).getValue()+" horas de uso.");
+            System.out.println("("+(j+1)+") Equipo: "+ equipos.get(e).getNombreEquipo()+"("+equipos.get(e).getCodigo()+") con "+ranking.get(j).getValue()+" horas de uso.");
         }
     }
 
     public void rankingusuarios(){
         usuarios.sort(Comparator.comparingInt(Usuario::getBadboy).reversed());
         for(int j=0;j<3;j++) {
-            System.out.println("("+j+1+") Usuario: "+usuarios.get(j).getNombre()+"("+usuarios.get(j).getCodigo()+") con indice de sesiones sobrepasadas de:"+usuarios.get(j).getBadboy());
+            System.out.println("("+(j+1)+") Usuario: "+usuarios.get(j).getNombre()+"("+usuarios.get(j).getCodigo()+") con indice de sesiones sobrepasadas de:"+usuarios.get(j).getBadboy());
         }
     }
 
@@ -229,18 +229,21 @@ public class sistema implements Serializable{
         usuarios.add(u);
     }
 
-    public void Serializar(sistema sis){
+    public void Serializar(){
         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("sistema.dat"))) {
-            out.writeObject(sis);
+            out.writeObject(this);
             System.out.println("Sistema guardado exitosamente");
         }catch(IOException e){
             System.out.println("Error al serializar"+e.getMessage());
         }
     }
 
-    public void deserializar(sistema sis){
+    public static sistema deserializar(){
         try(ObjectInputStream in= new ObjectInputStream(new FileInputStream("sistema.dat"))) {
-            sis = (sistema) in.readObject();
+            sistema sis = (sistema) in.readObject();
+            sis.sc = new Scanner(System.in);
+            System.out.println("Sistema cargado exitosamente");
+            return sis;
         }catch (FileNotFoundException e) {
             System.out.println("Archivo no encontrado");
         } catch (IOException e) {
@@ -248,6 +251,7 @@ public class sistema implements Serializable{
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
+        return null;
     }
 
 }

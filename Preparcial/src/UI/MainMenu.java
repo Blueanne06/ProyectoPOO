@@ -15,7 +15,7 @@ public class MainMenu {
 
         sistema sistema = new sistema();
 
-        sistema.deserializar(sistema);
+        sistema = sistema.deserializar();
 
         Scanner sc = new Scanner(System.in);
         int opp;
@@ -33,6 +33,8 @@ public class MainMenu {
                     System.out.println("Error: " + e.getMessage());
                 }
             }while(login ==null);
+
+
 
 
         do{
@@ -93,10 +95,10 @@ public class MainMenu {
                         sistema.setUsuarios(CargarUsuarios.cargarUsuariosDesdeArchivo("usuarios.txt"));
                     break;
                 case 11:
-                    sistema.Serializar(sistema);
+                    sistema.Serializar();
                     break;
                 case 12:
-                    sistema.deserializar(sistema);
+                    sistema = sistema.deserializar();
                     break;
             }
         }while(opp!= 0);
