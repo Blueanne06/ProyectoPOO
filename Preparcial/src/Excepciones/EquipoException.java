@@ -1,7 +1,7 @@
 package Excepciones;
 
-public class ExistenciaEquipoException extends RuntimeException {
-  public ExistenciaEquipoException(String message) {
-    super(message);
-  }
+public class EquipoException extends Exception {
+    public EquipoException(String message) {
+        super(message);
+    }
 }

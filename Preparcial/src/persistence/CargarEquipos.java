@@ -10,7 +10,7 @@ import java.util.*;//import java.util.ArrayList y compañia.
 
 public class CargarEquipos {
 
-    public static List<EquipoLaboratorio> cargarEquiposDesdeArchivo(String ruta){
+    public static List<EquipoLaboratorio> cargarEquiposDesdeArchivo(String ruta) {
         List<EquipoLaboratorio> equipos = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(ruta))){
             String linea;
@@ -23,9 +23,8 @@ public class CargarEquipos {
                 Estado estado = Estado.valueOf(datos[3]);
                 String laboratorio = datos[4];
                 float valor = Float.parseFloat(datos[5]);
-                int contador = Integer.parseInt(datos[6]);
 
-                EquipoLaboratorio equipo = new EquipoLaboratorio(codigo, nombreEquipo, tipoEquipo, estado, laboratorio,valor,contador);
+                EquipoLaboratorio equipo = new EquipoLaboratorio(codigo, nombreEquipo, tipoEquipo, estado, laboratorio,valor);
                 equipos.add(equipo);
 
             }

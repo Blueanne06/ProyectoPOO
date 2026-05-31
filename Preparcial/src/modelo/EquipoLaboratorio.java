@@ -1,6 +1,8 @@
 package modelo;
 
-public class EquipoLaboratorio {
+import java.io.Serializable;
+
+public class EquipoLaboratorio implements Serializable {
 
     private String codigo;
     private String nombreEquipo;
@@ -11,14 +13,14 @@ public class EquipoLaboratorio {
     private int contador;
 
     public EquipoLaboratorio(String codigo, String nombreEquipo, TipoEquipo tipoEquipo, Estado estado,
-            String laboratorio, float valor, int contador) {
+            String laboratorio, float valor) {
         this.codigo = codigo;
         this.nombreEquipo = nombreEquipo;
         this.tipoEquipo = tipoEquipo;
         this.estado = estado;
         this.laboratorio = laboratorio;
         this.valor = valor;
-        this.contador = contador;
+        this.contador = 0;
     }
 
     public String getCodigo() {
