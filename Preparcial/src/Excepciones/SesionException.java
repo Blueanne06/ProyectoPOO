@@ -1,7 +1,7 @@
 package Excepciones;
 
-public class SesionException extends RuntimeException {
-  public SesionException(String message) {
-    super(message);
-  }
+public class SesionException extends Exception {
+    public SesionException(String message) {
+        super(message);
+    }
 }

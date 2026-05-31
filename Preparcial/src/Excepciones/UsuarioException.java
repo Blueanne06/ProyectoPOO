@@ -1,7 +1,7 @@
 package Excepciones;
 
-public class UsuarioInexistenteException extends Exception {
-    public UsuarioInexistenteException(String message) {
+public class UsuarioException extends Exception {
+    public UsuarioException(String message) {
         super(message);
     }
 }

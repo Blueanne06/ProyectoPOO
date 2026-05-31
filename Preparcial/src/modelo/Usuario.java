@@ -1,11 +1,14 @@
 package modelo;
 
-public abstract class Usuario {
+import java.io.Serializable;
+
+public abstract class Usuario implements Serializable {
 
     protected String nombre;
     protected Rol rol; // numeraciones: 1. Estudiante, 2. Docente, 3. Personal de apoyo
     protected String codigo;
     protected int clave;
+    protected int badboy;
 
     protected Usuario(String nombre, Rol rol, String codigo, int clave) {
 
@@ -13,7 +16,16 @@ public abstract class Usuario {
         this.rol = rol;
         this.codigo = codigo;
         this.clave = clave;
+        this.badboy=0;
 
+    }
+
+    public int getBadboy() {
+        return badboy;
+    }
+
+    public void setBadboy(int badboy) {
+        this.badboy = badboy;
     }
 
     public String getNombre() {

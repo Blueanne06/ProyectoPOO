@@ -1,34 +1,54 @@
 package modelo;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class Sesion {
-    private String codigo;
+public class Sesion implements Serializable {
+    private int codigo;
     private EquipoLaboratorio equipo;
     private Usuario usuario;
     private LocalDateTime fechaHoraInicio;
     private LocalDateTime fechaHoraFinalizacion;
-    private LocalDateTime tiempoLimite;
+    private float tiempoLimite;
+    private float horasuso;
     private float penalizacion;
+    private static int cont=0;
 
-    public Sesion(String codigo, EquipoLaboratorio equipo, Usuario usuario,
-            LocalDateTime fechaHoraInicio, LocalDateTime fechaHoraFinalizacion,
-            LocalDateTime tiempoLimite, float penalizacion) {
-        this.codigo = codigo;
+    public Sesion(EquipoLaboratorio equipo, Usuario usuario,
+            float tiempoLimite) {
+        cont++;
+        this.codigo = cont;
         this.equipo = equipo;
         this.usuario = usuario;
-        this.fechaHoraInicio = fechaHoraInicio;
-        this.fechaHoraFinalizacion = fechaHoraFinalizacion;
+        this.fechaHoraInicio = LocalDateTime.now();
+        this.fechaHoraFinalizacion = null;
         this.tiempoLimite = tiempoLimite;
-        this.penalizacion = penalizacion;
+        this.horasuso=0;
+        this.penalizacion = 0;
     }
 
-    public String getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(String codigo) {
+    public void setCodigo(int codigo) {
         this.codigo = codigo;
+    }
+
+    public void setHorasuso(float horasuso) {
+        this.horasuso = horasuso;
+    }
+
+    public static void setCont(int cont) {
+        Sesion.cont = cont;
+    }
+
+    public float getHorasuso() {
+        return horasuso;
+    }
+
+    public static int getCont() {
+        return cont;
+    }
+
+    public int getCodigo() {
+        return codigo;
     }
 
     public EquipoLaboratorio getEquipo() {
@@ -63,11 +83,11 @@ public class Sesion {
         this.fechaHoraFinalizacion = fechaHoraFinalizacion;
     }
 
-    public LocalDateTime getTiempoLimite() {
+    public float getTiempoLimite() {
         return tiempoLimite;
     }
 
-    public void setTiempoLimite(LocalDateTime tiempoLimite) {
+    public void setTiempoLimite(float tiempoLimite) {
         this.tiempoLimite = tiempoLimite;
     }
 
